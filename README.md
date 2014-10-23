@@ -101,4 +101,5 @@ $('.selector').ruler('refresh');
 
 ##Similar projects
 [jQuery.ruler](https://github.com/hilliuse/ruler/) - Add Photoshop-like rulers and mouse position to a container element using jQuery. [http://ruler.hilliuse.com](http://ruler.hilliuse.com)
+
 [RulersGuides.js](https://github.com/mark-rolich/RulersGuides.js) - Creates Photoshop-like guides and rulers interface on a web page
