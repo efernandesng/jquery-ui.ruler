@@ -96,8 +96,8 @@ _Note:_ **false** or otherwise to disable
 $('.selector').ruler('refresh');
 ```
 ----------
-##Licensing
-**MIT**
+##License
+Licensed under the MIT license.
 
 ##Similar projects
 [jQuery.ruler](https://github.com/hilliuse/ruler/) - Add Photoshop-like rulers and mouse position to a container element using jQuery. [http://ruler.hilliuse.com](http://ruler.hilliuse.com)
