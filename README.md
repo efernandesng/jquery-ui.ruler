@@ -24,7 +24,8 @@ $('.selector').ruler({
 	tickMajor: 10,
 	tickMinor: 5,
 	tickMicro: 1,
-	showLabel: true
+	showLabel: true,
+	arrowStyle:'arrow'
 });
 ```
 ## Documentation

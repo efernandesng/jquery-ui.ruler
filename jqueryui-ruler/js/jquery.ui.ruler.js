@@ -5,7 +5,8 @@
             tickMajor: 100,
             tickMinor: 20,
             tickMicro: 10,
-            showLabel: true
+            showLabel: true,
+			arrowStyle: 'line'
         },
 
         _$el: null,
@@ -58,14 +59,30 @@
             var $topRuler = $(document.createElement('div')).addClass('ruler').addClass('top');
             $topRuler.appendTo($container);
 
-            var $topArrow = $(document.createElement('div')).addClass('top-arrow');
+			var toparrowClass, leftarrowClass
+			switch (this.options.arrowStyle) {
+			case 'arrow':
+				toparrowClass = 'top-arrow';
+				leftarrowClass = 'left-arrow';
+				break;
+			case 'line':
+				toparrowClass = 'top-line';
+				leftarrowClass = 'left-line';
+				break;
+			case 'none':
+				toparrowClass = 'top-none';
+				leftarrowClass = 'left-none';
+				break;
+			}
+			
+            var $topArrow = $(document.createElement('div')).addClass(toparrowClass);
             $topArrow.appendTo($topRuler);
 
             /* Left ruler */
             var $leftRuler = $(document.createElement('div')).addClass('ruler').addClass('left');
             $leftRuler.appendTo($container);
 
-            var $leftArrow = $(document.createElement('div')).addClass('left-arrow');
+            var $leftArrow = $(document.createElement('div')).addClass(leftarrowClass);
             $leftArrow.appendTo($leftRuler);
 
             /* stage */
@@ -302,8 +319,8 @@
         },
 
         _fixArrowsPosition: function (mouseX, mouseY) {
-            var arrowX = mouseX - this.element.offset().left - this._$corner.width() - Math.round(this._$topArrow.outerWidth() / 2);
-            var arrowY = mouseY - this.element.offset().top - this._$corner.height() - Math.round(this._$leftArrow.outerHeight() / 2);
+            var arrowX = mouseX - this.element.offset().left - this._$corner.width() - Math.round(this._$topArrow.outerWidth() / 2) + parseInt($('.ef-ruler').parents().eq(1).css('padding-left'),10);
+            var arrowY = mouseY - this.element.offset().top - this._$corner.height() - Math.round(this._$leftArrow.outerHeight() / 2) + parseInt($('.ef-ruler').parents().eq(1).css('padding-top'),10);
 
             this._$topArrow.css('left', arrowX + this._scrollLeft);
             this._$leftArrow.css('top', arrowY + this._scrollTop);
