@@ -108,7 +108,7 @@ _Default:_ **0**
 **Example**
 ```javascript
 // getter
-var startX = $('.selector').ruler('option', 'startY');
+var startY = $('.selector').ruler('option', 'startY');
 // setter
 $('.selector').ruler('option', 'startY', '-200');
 ```
