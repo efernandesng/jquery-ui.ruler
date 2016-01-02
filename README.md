@@ -49,7 +49,7 @@ var unit = $('.selector').ruler('option', 'unit');
 $('.selector').ruler('option', 'unit', 'mm');
 ```
 ----------
-**`tickMajor`** Interval of major tick. 
+**`tickMajor`** Interval of major tick.
 _Default:_ **100**
 _Note:_ **0** to disable
 
@@ -61,7 +61,7 @@ var tickMajor = $('.selector').ruler('option', 'tickMajor');
 $('.selector').ruler('option', 'tickMajor', '50');
 ```
 ----------
-**`tickMinor`** Interval of minor tick. 
+**`tickMinor`** Interval of minor tick.
 _Default:_ **20**
 _Note:_ **0** to disable
 
@@ -73,7 +73,7 @@ var tickMinor = $('.selector').ruler('option', 'tickMinor');
 $('.selector').ruler('option', 'tickMinor', '50');
 ```
 ----------
-**`tickMicro`** Interval of micro tick. 
+**`tickMicro`** Interval of micro tick.
 _Default:_ **10**
 _Note:_ **0** to disable
 
@@ -85,9 +85,33 @@ var tickMicro = $('.selector').ruler('option', 'tickMicro');
 $('.selector').ruler('option', 'tickMicro', '50');
 ```
 ----------
-**`showLabel`** Show or hide major tick value 
+**`showLabel`** Show or hide major tick value
 _Default:_ **true**
 _Note:_ **false** or otherwise to disable
+
+----------
+**`startX`** Value at the origin for the horizontal ruler.
+_Default:_ **0**
+
+**Example**
+```javascript
+// getter
+var startX = $('.selector').ruler('option', 'startX');
+// setter
+$('.selector').ruler('option', 'startX', '-200');
+```
+
+----------
+**`startY`** Value at the origin for the vertical ruler.
+_Default:_ **0**
+
+**Example**
+```javascript
+// getter
+var startY = $('.selector').ruler('option', 'startY');
+// setter
+$('.selector').ruler('option', 'startY', '-200');
+```
 
 ###Methods
 **`refresh()`** Refreshes all ruler components

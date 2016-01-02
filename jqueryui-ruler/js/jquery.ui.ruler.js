@@ -6,7 +6,9 @@
             tickMinor: 20,
             tickMicro: 10,
             showLabel: true,
-			arrowStyle: 'line'
+			arrowStyle: 'line',
+            startX: 0,
+            startY: 0,
         },
 
         _$el: null,
@@ -44,6 +46,8 @@
             this.options.tickMajor = this._constrainTick(this.options.tickMajor);
             this.options.tickMinor = this._constrainTick(this.options.tickMinor);
             this.options.tickMicro = this._constrainTick(this.options.tickMicro);
+            this.options.startX = this._constrainStart(this.options.startX);
+            this.options.startY = this._constrainStart(this.options.startY);
 
             /* Calculate scrollbar width */
             this._scrollBarWidth = this._calcScrollBarWidth();
@@ -74,7 +78,7 @@
 				leftarrowClass = 'left-none';
 				break;
 			}
-			
+
             var $topArrow = $(document.createElement('div')).addClass(toparrowClass);
             $topArrow.appendTo($topRuler);
 
@@ -142,6 +146,10 @@
                 case 'tickMicro':
                     value = this._constrainTick(value);
                     break;
+                case 'startX':
+                case 'startY':
+                    value = this._constrainStart(value);
+                    break;
             }
 
             this._super(key, value);
@@ -174,6 +182,14 @@
                 return 0;
 
             return tick;
+        },
+
+        _constrainStart: function (start) {
+            var value = parseInt(start);
+            if (isNaN(value))
+                return 0;
+
+            return value;
         },
 
         _calcScrollBarWidth: function () {
@@ -256,7 +272,7 @@
             var unitPos;
 
             /* Top ruler */
-            unitPos = this._lastTopRulerPos * this._unitDiv;
+            unitPos = (this._lastTopRulerPos + this.options.startX) * this._unitDiv;
             var topRulerWidth = this._$topRuler.width() + 100;
             while (this._lastTopRulerPos < topRulerWidth) {
                 if (this.options.tickMajor > 0 && (unitPos % this.options.tickMajor) === 0) {
@@ -287,7 +303,7 @@
             }
 
             /* Left ruler */
-            unitPos = this._lastLeftRulerPos * this._unitDiv;
+            unitPos = (this._lastLeftRulerPos + this.options.startY) * this._unitDiv;
             var leftRulerHeight = this._$leftRuler.height() + 100;
             while (this._lastLeftRulerPos < leftRulerHeight) {
                 if (this.options.tickMajor > 0 && (unitPos % this.options.tickMajor) === 0) {
