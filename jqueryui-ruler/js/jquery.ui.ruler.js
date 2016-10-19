@@ -117,17 +117,23 @@
             this.element.mousemove(function (event) {
                 self._fixArrowsPosition(event.clientX, event.clientY);
             });
-            $(window).resize(function () {
-                self._fixRulerSize();
-                self._updateRulerTicks();
-            });
+            
+            //bind the window resize function
+            this._onWindowResize = $.proxy(this._onWindowResize, this);
+
+            $(window).on('resize', this._onWindowResize);
+        },
+	    
+	_onWindowResize:function() {
+          this._fixRulerSize();
+          this._updateRulerTicks();
         },
 
         _destroy: function () {
             /* Unbind */
             this._$container.unbind('scroll');
             this.element.unbind('mousemove');
-            $(window).unbind('resize');
+            $(window).unbind('resize', this._onWindowResize);
 
             /* Restore element contents */
             this.element.prepend(this._$stage.contents());
