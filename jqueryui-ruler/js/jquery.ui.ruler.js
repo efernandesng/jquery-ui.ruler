@@ -344,8 +344,8 @@
             var arrowX = mouseX - this.element.offset().left - this._$corner.width() - Math.round(this._$topArrow.outerWidth() / 2) + parseInt($('.ef-ruler').parents().eq(1).css('padding-left'),10);
             var arrowY = mouseY - this.element.offset().top - this._$corner.height() - Math.round(this._$leftArrow.outerHeight() / 2) + parseInt($('.ef-ruler').parents().eq(1).css('padding-top'),10);
 
-            this._$topArrow.css('left', arrowX + this._scrollLeft);
-            this._$leftArrow.css('top', arrowY + this._scrollTop);
+            this._$topArrow.css('left', arrowX + this._scrollLeft + $(window).scrollLeft());
+            this._$leftArrow.css('top', arrowY + this._scrollTop + $(window).scrollTop());
         },
 
         refresh: function () {
